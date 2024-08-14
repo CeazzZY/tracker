@@ -1,0 +1,26 @@
+{
+  "name": "ceazzzy-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .ts,.jsx,.tsx --fix --quiet ./packages ./examples"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "commitlint": "^19.4.0",
+    "eslint": "^8",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "8.0.3",
+    "prettier": "^3.3.3",
+    "rollup": "^4.20.0",
+    "typescript": "^5.5.4"
+  }
+}

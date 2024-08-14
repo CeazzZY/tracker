@@ -1,17 +1,22 @@
 {
   "name": "ceazzzy-tracker",
+  "private": "true",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext .ts,.jsx,.tsx --fix --quiet ./packages ./examples"
+    "lint": "eslint --ext .ts,.jsx,.tsx --fix --quiet ./packages ./examples",
+    "build": "rollup --bundleConfigAsCjs -c"
   },
   "keywords": [],
-  "author": "",
+  "author": "https://github.com/CeazzZY",
   "license": "ISC",
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
     "commitlint": "^19.4.0",
@@ -21,6 +26,9 @@
     "husky": "8.0.3",
     "prettier": "^3.3.3",
     "rollup": "^4.20.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "typescript": "^5.5.4"
   }
 }

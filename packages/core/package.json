@@ -1,0 +1,11 @@
+{
+  "name": "@ceazzzy-tracker/core",
+  "version": "1.0.0",
+  "description": "https://github.com/CeazzZY",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

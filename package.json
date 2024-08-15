@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .ts,.jsx,.tsx --fix --quiet ./packages ./examples",
-    "build": "rollup --bundleConfigAsCjs -c"
+    "build": "rollup --bundleConfigAsCjs -c",
+    "clean": "rimraf --glob dist types \"packages/*/dist\"",
+    "dev:react": "pnpm run -C examples/react-demo dev"
   },
   "keywords": [],
   "author": "https://github.com/CeazzZY",
@@ -25,6 +27,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "8.0.3",
     "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "rollup": "^4.20.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-typescript2": "^0.36.0",

@@ -1,1 +1,3 @@
-console.log(2);
+export default function test() {
+  console.log(2);
+}

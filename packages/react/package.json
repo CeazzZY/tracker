@@ -1,10 +1,20 @@
 {
-  "name": "react",
+  "name": "@ceazzzy-tracker/react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
+  },
   "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "https://github.com/CeazzZY",
   "license": "ISC"
 }

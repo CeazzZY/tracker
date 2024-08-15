@@ -15,26 +15,19 @@ function output(path) {
       input: [`./packages/${path}/src/index.ts`],
       output: [
         {
-          file: `./packages/${path}/dist/index.cjs.js`,
+          file: `./packages/${path}/dist/index.cjs`,
           format: 'cjs',
-          sourcemap: true,
+          // sourcemap: true,
         },
         {
-          file: `./packages/${path}/dist/index.esm.js`,
-          format: 'esm',
-          sourcemap: true,
+          file: `./packages/${path}/dist/index.mjs`,
+          format: 'es',
+          // sourcemap: true,
         },
         {
-          file: `./packages/${path}/dist/index.js`,
-          format: 'umd',
-          name: 'web-see',
-          sourcemap: true,
-        },
-        {
-          file: `./packages/${path}/dist/index.min.js`,
-          format: 'umd',
-          name: 'web-see',
-          sourcemap: true,
+          file: `./packages/${path}/dist/index.iife.js`,
+          format: 'iife',
+          name: 'tracker',
           plugins: [uglify()],
         },
       ],
@@ -53,12 +46,7 @@ function output(path) {
     },
     {
       input: `./packages/${path}/src/index.ts`,
-      output: [
-        { file: `./packages/${path}/dist/index.cjs.d.ts`, format: 'cjs' },
-        { file: `./packages/${path}/dist/index.esm.d.ts`, format: 'esm' },
-        { file: `./packages/${path}/dist/index.d.ts`, format: 'umd' },
-        { file: `./packages/${path}/dist/index.min.d.ts`, format: 'umd' },
-      ],
+      output: [{ file: `./packages/${path}/dist/index.d.ts`, format: 'es' }],
       plugins: [dts()],
     },
   ];

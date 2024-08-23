@@ -1,5 +1,5 @@
 {
-  "name": "@ceazzzy-tracker/react",
+  "name": "@ceazzzy-tracing/react",
   "version": "0.0.0",
   "description": "",
   "main": "./dist/index.cjs",
@@ -16,5 +16,8 @@
   "scripts": {},
   "keywords": [],
   "author": "https://github.com/CeazzZY",
-  "license": "ISC"
+  "license": "MIT",
+  "files": [
+    "dist"
+  ]
 }

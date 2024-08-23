@@ -1,5 +1,5 @@
 {
-  "name": "@ceazzzy-tracker/core",
+  "name": "@ceazzzy-tracing/core",
   "version": "0.0.0",
   "description": "",
   "main": "./dist/index.cjs",
@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "https://github.com/CeazzZY",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist"
+  ]
 }

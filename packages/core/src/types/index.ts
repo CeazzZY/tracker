@@ -7,3 +7,5 @@ export interface InitOptions {
 export interface ITracker {
   eventBus: any;
 }
+
+export type AnyFun = (...arg: any[]) => any;

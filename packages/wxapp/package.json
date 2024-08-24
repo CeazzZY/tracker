@@ -1,0 +1,25 @@
+{
+  "name": "@ceazzzy-tracing/wxapp",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "keywords": [],
+  "author": "https://github.com/CeazzZY",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@ceazzzy-tracing/core": "workspace:*"
+  }
+}

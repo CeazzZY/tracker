@@ -21,6 +21,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "rootDir": ".",
+    "paths": {
+      "@ceazzzy-tracing/core": [
+        "./packages/core/src/index.ts"
+      ],
+    },
   },
   "include": [
     "packages",

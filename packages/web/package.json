@@ -19,5 +19,8 @@
   "license": "MIT",
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@ceazzzy-tracing/core": "workspace:*"
+  }
 }

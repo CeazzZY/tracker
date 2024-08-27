@@ -1,5 +1,5 @@
 {
-  "name": "@ceazzzy-tracing/wxapp",
+  "name": "@ceazzzy-tracing/shared",
   "version": "0.0.0",
   "description": "",
   "main": "./dist/index.cjs",
@@ -13,14 +13,11 @@
     },
     "./*": "./*"
   },
+  "scripts": {},
   "keywords": [],
   "author": "https://github.com/CeazzZY",
   "license": "MIT",
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "@ceazzzy-tracing/core": "workspace:*",
-     "@ceazzzy-tracing/shared": "workspace:*"
-  }
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@ceazzzy-tracing/react",
+  "name": "@ceazzzy-tracing/web",
   "version": "0.0.0",
   "description": "",
   "main": "./dist/index.cjs",
@@ -21,6 +21,7 @@
     "dist"
   ],
   "dependencies": {
-    "@ceazzzy-tracing/core": "workspace:*"
+    "@ceazzzy-tracing/core": "workspace:*",
+    "@ceazzzy-tracing/shared": "workspace:*"
   }
 }

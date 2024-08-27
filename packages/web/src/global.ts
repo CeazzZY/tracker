@@ -1,5 +1,7 @@
+import { AnyFun } from '@ceazzzy-tracing/shared';
+
 class Global {
-  listenRouteChange(callback: any) {
+  listenRouteChange(callback: AnyFun) {
     window.addEventListener('hashchange', callback);
   }
 

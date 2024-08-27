@@ -1,4 +1,4 @@
-import { ITracker } from '../types';
+import { ITracker } from '@ceazzzy-tracing/shared';
 
 export const _global = getGlobal();
 export const _support = getGlobalSupport();

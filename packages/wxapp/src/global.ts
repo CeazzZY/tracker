@@ -1,13 +1,15 @@
+import { AnyFun } from '@ceazzzy-tracing/shared';
+
 class Global {
-  listenRouteChange(callback: any) {
+  listenRouteChange(callback: AnyFun) {
     wx.onAppRoute(callback);
   }
 
-  listenError(callback: any) {
+  listenError(callback: AnyFun) {
     wx.onError(callback);
   }
 
-  listenUnhandledRejection(callback: any) {
+  listenUnhandledRejection(callback: AnyFun) {
     wx.onUnhandledRejection(callback);
   }
 

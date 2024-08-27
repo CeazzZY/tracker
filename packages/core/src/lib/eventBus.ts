@@ -1,5 +1,5 @@
 import { EVENTTYPES } from '../common/';
-import { AnyFun } from '../types';
+import { AnyFun } from '@ceazzzy-tracing/shared';
 
 type Handlers = {
   [key in EVENTTYPES]?: AnyFun[];

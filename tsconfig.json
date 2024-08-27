@@ -25,6 +25,9 @@
       "@ceazzzy-tracing/core": [
         "./packages/core/src/index.ts"
       ],
+      "@ceazzzy-tracing/shared": [
+        "./packages/shared/src/index.ts"
+      ],
     },
   },
   "include": [

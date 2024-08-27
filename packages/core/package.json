@@ -18,5 +18,8 @@
   "license": "MIT",
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@ceazzzy-tracing/shared": "workspace:*"
+  }
 }

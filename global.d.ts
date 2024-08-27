@@ -3,4 +3,10 @@ declare interface Window {
   __isInit__: boolean;
 }
 
-declare let wx: any;
+declare interface Wx {
+  __Tracker__: ITracker;
+  __isInit__: boolean;
+  [prop: string]: any;
+}
+
+declare let wx: Wx;

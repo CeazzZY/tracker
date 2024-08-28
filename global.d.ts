@@ -6,7 +6,7 @@ declare interface Window {
 declare interface Wx {
   __Tracker__: ITracker;
   __isInit__: boolean;
-  [prop: string]: any;
+  [key: string]: any;
 }
 
 declare let wx: Wx;

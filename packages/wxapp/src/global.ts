@@ -1,8 +1,12 @@
 import { AnyFun } from '@ceazzzy-tracing/shared';
+import { IRouteInfo } from './types';
 
 class Global {
   listenRouteChange(callback: AnyFun) {
-    wx.onAppRoute(callback);
+    wx.onAppRoute((data: IRouteInfo) => {
+      const { path, timeStamp } = data;
+      callback(path, timeStamp);
+    });
   }
 
   listenError(callback: AnyFun) {

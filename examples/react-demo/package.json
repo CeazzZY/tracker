@@ -7,9 +7,10 @@
     "dev": "vite --port 8889"
   },
   "dependencies": {
+    "@ceazzzy-tracing/core": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@ceazzzy-tracing/core": "workspace:*"
+    "react-router-dom": "^6.26.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.72",

@@ -1,6 +1,6 @@
-import { View, Text } from '@tarojs/components';
+import React, { useState } from 'react';
 
-export default function Index() {
+export default function Err() {
   function triggerSyncError() {
     const a = {};
 
@@ -22,10 +22,14 @@ export default function Index() {
     const res = await AsyncError();
     console.log(res);
   }
+
+  const [show, setShow] = useState(false);
   return (
-    <View className="index">
-      <Text onClick={triggerSyncError}>代码同步错误</Text>
-      <Text onClick={triggerAsyncError}>代码异步错误</Text>
-    </View>
+    <div>
+      <div onClick={triggerSyncError}>同步错误</div>
+      <div onClick={triggerAsyncError}>异步错误</div>
+      <div onClick={() => setShow(true)}>资源加载错误</div>
+      {show && <img src="https://err/" />}
+    </div>
   );
 }

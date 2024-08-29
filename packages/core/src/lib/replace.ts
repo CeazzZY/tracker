@@ -1,6 +1,6 @@
+import { _method } from './../utils/global';
 import { EVENTTYPES } from '../common';
 import { isValidKey } from '../utils';
-import { _global } from '../utils/global';
 import { eventBus } from './eventBus';
 
 export function initReplace(): void {
@@ -15,7 +15,6 @@ function replace(type: EVENTTYPES) {
   if (!isValidKey(type, EVENTTYPES)) return;
 
   const value = EVENTTYPES[type];
-  // debug('replace-初始化挂载事件:', value)
   switch (value) {
     case EVENTTYPES.ERROR:
       listenError(EVENTTYPES.ERROR);
@@ -42,25 +41,31 @@ function replace(type: EVENTTYPES) {
 }
 
 function listenError(type: EVENTTYPES) {
-  _global.__Tracker__.listenError(function (e: ErrorEvent) {
-    eventBus.runEvent(type, e);
+  _method.listenError(function (err: ErrorEvent) {
+    eventBus.runEvent(type, err);
   });
 }
 
 function listenClick(type: EVENTTYPES) {
-  _global.__Tracker__.listenClick(function (e: ErrorEvent) {
-    eventBus.runEvent(type, e);
+  _method.listenClick(function (err: ErrorEvent) {
+    eventBus.runEvent(type, err);
   });
 }
 
 function listenUnhandledrejection(type: EVENTTYPES) {
-  console.log(type);
+  _method.listenUnhandledRejection(function (err: PromiseRejectionEvent) {
+    eventBus.runEvent(type, err);
+  });
 }
 
 function listenBeforeunload(type: EVENTTYPES) {
-  console.log(type);
+  _method.listenBeforeunload(function (event: BeforeUnloadEvent) {
+    eventBus.runEvent(type, event);
+  });
 }
 
 function listenHashchange(type: EVENTTYPES) {
-  console.log(type);
+  _method.listenRouteChange(function (event: HashChangeEvent) {
+    eventBus.runEvent(type, event);
+  });
 }

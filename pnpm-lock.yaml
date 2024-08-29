@@ -68,9 +68,9 @@ importers:
 
   examples/react-demo:
     dependencies:
-      '@ceazzzy-tracing/core':
+      '@ceazzzy-tracing/web':
         specifier: workspace:*
-        version: link:../../packages/core
+        version: link:../../packages/web
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -211,8 +211,6 @@ importers:
       '@ceazzzy-tracing/shared':
         specifier: workspace:*
         version: link:../shared
-
-  packages/react: {}
 
   packages/shared: {}
 

@@ -1,9 +1,9 @@
-import { AnyFun } from '@ceazzzy-tracing/shared';
+import { AnyFun, Method } from '@ceazzzy-tracing/shared';
 import { isSupportSendBeacon } from './utils';
 
-class Global {
-  send;
+class WebMethod extends Method {
   constructor() {
+    super();
     if (isSupportSendBeacon())
       this.send = window.navigator.sendBeacon.bind(this);
     this.send = (url: string, data: any) => {
@@ -24,7 +24,15 @@ class Global {
     window.addEventListener('unhandledrejection', callback);
   }
 
+  listenBeforeunload(callback: AnyFun): void {
+    window.addEventListener('beforeunload', callback);
+  }
+
+  listenClick(callback: AnyFun): void {
+    window.addEventListener('click', callback);
+  }
+
   getPerformance() {}
 }
 
-export default Global;
+export default WebMethod;

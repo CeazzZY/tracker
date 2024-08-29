@@ -28,6 +28,12 @@
       "@ceazzzy-tracing/shared": [
         "./packages/shared/src/index.ts"
       ],
+      "@ceazzzy-tracing/web": [
+        "./packages/web/src/index.ts"
+      ],
+      "@ceazzzy-tracing/wxapp": [
+        "./packages/wxapp/src/index.ts"
+      ],
     },
   },
   "include": [

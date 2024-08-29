@@ -2,14 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import routes from './routes';
+import { initWeb } from '@ceazzzy-tracing/web';
 
-window.addEventListener('error', (err) => {
-  console.log(err);
-});
-
-window.addEventListener('unhandledrejection', (err) => {
-  console.log(err);
-});
+initWeb({});
 
 function App() {
   return (

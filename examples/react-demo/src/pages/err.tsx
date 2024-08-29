@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 export default function Err() {
+  const [show, setShow] = useState(false);
+
   function triggerSyncError() {
     const a = {};
-
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-
     a.split('/');
   }
 
@@ -23,7 +23,6 @@ export default function Err() {
     console.log(res);
   }
 
-  const [show, setShow] = useState(false);
   return (
     <div>
       <div onClick={triggerSyncError}>同步错误</div>

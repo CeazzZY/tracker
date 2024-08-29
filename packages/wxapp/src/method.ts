@@ -1,7 +1,7 @@
-import { AnyFun } from '@ceazzzy-tracing/shared';
+import { AnyFun, Method } from '@ceazzzy-tracing/shared';
 import { IRouteInfo } from './types';
 
-class Global {
+class WxMethod extends Method {
   listenRouteChange(callback: AnyFun) {
     wx.onAppRoute((data: IRouteInfo) => {
       const { path, timeStamp } = data;
@@ -20,8 +20,6 @@ class Global {
   getPerformance() {
     wx.getPerformance();
   }
-
-  send() {}
 }
 
-export default Global;
+export default WxMethod;

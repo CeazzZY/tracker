@@ -7,7 +7,7 @@ export function parseError(
 ): IErr {
   if ((event as PromiseRejectedResult).reason !== undefined)
     return dealPM(event as PromiseRejectedResult);
-  if (!(event instanceof EvalError)) return dealRS(event as Event);
+  if (!(event instanceof ErrorEvent)) return dealRS(event as Event);
   return dealJS(event as ErrorEvent);
 }
 

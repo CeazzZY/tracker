@@ -24,7 +24,6 @@ export default function Err() {
 
   function AsyncError() {
     return new Promise((_, reject) => {
-      console.log(a);
       setTimeout(() => {
         reject('error');
       }, 1000);

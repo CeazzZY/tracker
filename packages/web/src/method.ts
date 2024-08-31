@@ -1,5 +1,6 @@
-import { AnyFun, Method } from '@ceazzzy-tracing/shared';
+import { AnyFun, IErr, Method } from '@ceazzzy-tracing/shared';
 import { isSupportSendBeacon } from './utils';
+import { parseError } from './utils/err';
 
 class WebMethod extends Method {
   constructor() {
@@ -12,16 +13,29 @@ class WebMethod extends Method {
     };
   }
 
-  listenRouteChange(callback: AnyFun) {
+  listenRouteChange(callback: AnyFun): void {
     window.addEventListener('hashchange', callback);
   }
 
-  listenError(callback: AnyFun) {
-    window.addEventListener('error', callback);
+  listenError(callback: (err: IErr) => void): void {
+    window.addEventListener(
+      'error',
+      (err: ErrorEvent) => {
+        const errInfo = parseError(err);
+        callback(errInfo);
+      },
+      true
+    );
   }
 
-  listenUnhandledRejection(callback: AnyFun) {
-    window.addEventListener('unhandledrejection', callback);
+  listenUnhandledRejection(callback: (err: IErr) => void): void {
+    window.addEventListener(
+      'unhandledrejection',
+      (err: PromiseRejectionEvent) => {
+        const errInfo = parseError(err);
+        callback(errInfo);
+      }
+    );
   }
 
   listenBeforeunload(callback: AnyFun): void {

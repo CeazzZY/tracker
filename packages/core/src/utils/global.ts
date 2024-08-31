@@ -1,5 +1,9 @@
 import { Method, ITracker } from '@ceazzzy-tracing/shared';
 
+export const _global = getGlobal();
+export const _support = getGlobalSupport();
+export let _method: Method;
+
 function getGlobal(): Window | Wx {
   if (window) return window;
   if (wx) return wx;
@@ -13,11 +17,7 @@ function getGlobalSupport(): ITracker {
   return _global.__Tracker__;
 }
 
-function getGlobalMethod(): Method {
-  _global.__Method__ = _global.__Method__ || ({} as Method);
-  return _global.__Method__;
+export function GlobalMethod(method: Method) {
+  _global.__Method__ = _global.__Method__ || method;
+  _method = _global.__Method__;
 }
-
-export const _global = getGlobal();
-export const _support = getGlobalSupport();
-export const _method = getGlobalMethod();

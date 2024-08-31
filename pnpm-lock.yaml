@@ -99,6 +99,9 @@ importers:
       '@babel/runtime':
         specifier: ^7.24.4
         version: 7.25.0
+      '@ceazzzy-tracing/wxapp':
+        specifier: workspace:*
+        version: link:../../packages/wxapp
       '@tarojs/components':
         specifier: 4.0.4
         version: 4.0.4(@tarojs/helper@4.0.4)(@tarojs/shared@4.0.4)(@types/react@18.3.3)(postcss@8.4.41)(react@18.3.1)(rollup@3.29.4)
@@ -202,6 +205,16 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.5.4
+      vite:
+        specifier: ^4.2.0
+        version: 4.5.3(@types/node@22.2.0)(less@4.2.0)(sass@1.77.8)(terser@5.31.6)
+
+  examples/vanilla:
+    dependencies:
+      '@ceazzzy-tracing/web':
+        specifier: workspace:*
+        version: link:../../packages/web
+    devDependencies:
       vite:
         specifier: ^4.2.0
         version: 4.5.3(@types/node@22.2.0)(less@4.2.0)(sass@1.77.8)(terser@5.31.6)

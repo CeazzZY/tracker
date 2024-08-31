@@ -4,7 +4,9 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "vite --port 8889"
+    "dev": "vite --port 8889",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@ceazzzy-tracing/web": "workspace:*",

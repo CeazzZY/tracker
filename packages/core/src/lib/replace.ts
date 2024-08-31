@@ -2,6 +2,7 @@ import { _method } from './../utils/global';
 import { EVENTTYPES } from '../common';
 import { isValidKey } from '../utils';
 import { eventBus } from './eventBus';
+import { IErr } from '@ceazzzy-tracing/shared';
 
 export function initReplace(): void {
   for (const key in EVENTTYPES) {
@@ -41,7 +42,7 @@ function replace(type: EVENTTYPES) {
 }
 
 function listenError(type: EVENTTYPES) {
-  _method.listenError(function (err: ErrorEvent) {
+  _method.listenError(function (err: IErr) {
     eventBus.runEvent(type, err);
   });
 }

@@ -1,7 +1,6 @@
 export interface InitOptions {
   dsn: string;
   appName: string;
-  userID: string;
 }
 
 export interface ITracker {

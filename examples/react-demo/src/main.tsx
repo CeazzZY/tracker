@@ -4,7 +4,10 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 import routes from './routes';
 import { initWeb } from '@ceazzzy-tracing/web';
 
-initWeb({});
+initWeb({
+  dsn: 'http://127.0.0.1:4523/m1/5086603-0-default/tracing',
+  appName: 'test',
+});
 
 function App() {
   return (

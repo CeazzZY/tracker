@@ -32,6 +32,7 @@ export default function Index() {
   }
 
   async function triggerAsyncError() {
+    console.log(a);
     const res = await AsyncError();
     console.log(res);
   }

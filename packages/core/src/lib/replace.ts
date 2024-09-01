@@ -54,7 +54,7 @@ function listenClick(type: EVENTTYPES) {
 }
 
 function listenUnhandledrejection(type: EVENTTYPES) {
-  _method.listenUnhandledRejection(function (err: PromiseRejectionEvent) {
+  _method.listenUnhandledRejection(function (err: IErr) {
     eventBus.runEvent(type, err);
   });
 }

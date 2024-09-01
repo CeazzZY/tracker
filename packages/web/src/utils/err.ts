@@ -83,16 +83,14 @@ function parseStack(stack: string, message: string): IErrStack[] {
   if (!stack) return [];
   const rChromeCallStack = /^\s*at\s*([^(]+)\s*\((.+?):(\d+):(\d+)\)$/;
   const rMozlliaCallStack = /^\s*([^@]*)@(.+?):(\d+):(\d+)$/;
-  console.log(stack);
 
   const callStackStr = stack.replace(new RegExp(`^[\\w\\s:]*${message}\n`), '');
-  const len = Math.max(STACKMAXLEN, callStackStr.length);
+  const len = Math.min(STACKMAXLEN, callStackStr.length);
 
   const callStackFrameList = callStackStr
     .split('\n')
     .slice(0, len)
     .map((str: string) => {
-      console.log(str);
       const chromeErrResult = str.match(rChromeCallStack);
       if (chromeErrResult) {
         return {

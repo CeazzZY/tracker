@@ -1,6 +1,6 @@
 import { AnyFun, IErr, Method } from '@ceazzzy-tracing/shared';
 import { IRouteInfo } from './types';
-import { parseErr } from './utils/err';
+import { parseAsyncErr, parseSyncErr } from './utils/err';
 
 class WxMethod extends Method {
   listenRouteChange(callback: AnyFun) {
@@ -12,13 +12,16 @@ class WxMethod extends Method {
 
   listenError(callback: (err: IErr) => void) {
     wx.onError((err: string) => {
-      const standardErr = parseErr(err);
-      callback(standardErr);
+      const errInfo = parseSyncErr(err);
+      callback(errInfo);
     });
   }
 
-  listenUnhandledRejection(callback: AnyFun) {
-    wx.onUnhandledRejection(callback);
+  listenUnhandledRejection(callback: (err: IErr) => void) {
+    wx.onUnhandledRejection((err: PromiseRejectionEvent) => {
+      const errInfo = parseAsyncErr(err);
+      callback(errInfo);
+    });
   }
 
   getPerformance() {

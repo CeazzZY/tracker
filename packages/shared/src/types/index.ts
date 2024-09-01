@@ -1,11 +1,13 @@
 export interface InitOptions {
   dsn: string;
   appName: string;
-  useID: string;
+  userID: string;
 }
 
 export interface ITracker {
   eventBus: any;
+  sendData: any;
+  options: any;
 }
 
 export abstract class Method {

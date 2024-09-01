@@ -3,13 +3,18 @@ export interface ISendData {
   uid: string;
   ip: string;
   time: number;
-  type: 'error' | 'rejected' | 'assets' | 'pv' | 'pv-during' | 'event';
+  type: DataType;
   data: IData;
 }
 
-/**
- *"error","rejected","assets","pv","uv","time","event"
- */
+export enum DataType {
+  ERROR = 'error',
+  REJECTED = 'rejected',
+  PV = 'pv',
+  PVDURING = 'pv-during',
+  EVENT = 'event',
+}
+
 export interface IData {
   id: string;
 }

@@ -1,10 +1,12 @@
+import { IErr } from '@ceazzzy-tracing/shared';
+
 export interface ISendData {
   appId: string;
   uid: string;
   ip: string;
   time: number;
   type: DataType;
-  data: IData;
+  data: IErr;
 }
 
 export enum DataType {

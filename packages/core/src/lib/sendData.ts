@@ -1,4 +1,4 @@
-import { DataType, IData, ISendData } from '../types';
+import { DataType, ISendData } from '../types';
 import { _support, _method } from '../utils/global';
 import { options } from './options';
 
@@ -6,7 +6,7 @@ const SENDMAXLEN = 10;
 
 class SendData {
   private timerID: ReturnType<typeof setTimeout> | undefined;
-  private eventList: any[] = [];
+  private eventList: ISendData[] = [];
   private report;
   constructor() {
     this.report = _method.send;
@@ -25,7 +25,7 @@ class SendData {
     }
   }
 
-  addData(type: DataType, data: IData) {
+  addData(type: DataType, data: ISendData['data']) {
     const { appId, uid, ip } = options;
     const event: ISendData = {
       appId,

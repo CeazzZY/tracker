@@ -10,7 +10,6 @@ export function init(method: Method, options: InitOptions): void {
   if (!initOptions(options)) return;
 
   GlobalMethod(method);
-  console.log(options);
   initReplace();
 
   initSendData();

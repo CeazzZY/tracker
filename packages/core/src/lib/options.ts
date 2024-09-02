@@ -4,27 +4,27 @@ import { getSessionId } from '../utils/userId';
 
 class Options {
   dsn: string = '';
-  appName: string = '';
+  appId: string = '';
   userId: string = '';
   constructor(options: InitOptions) {
-    const { dsn, appName } = options;
+    const { dsn, appId } = options;
     this.dsn = dsn;
-    this.appName = appName;
+    this.appId = appId;
     this.userId = getSessionId();
   }
 }
 
 function validateInitOption(options: InitOptions) {
-  const { dsn, appName } = options;
-  if (!dsn && !appName) return false;
+  const { dsn, appId } = options;
+  if (!dsn && !appId) return false;
   return true;
 }
 
 export let options: any;
 
-export function initOptions(options: InitOptions) {
-  if (!validateInitOption(options)) return false;
-  options = new Options(options);
+export function initOptions(option: InitOptions) {
+  if (!validateInitOption(option)) return false;
+  options = new Options(option);
   _support.options = options;
   return true;
 }

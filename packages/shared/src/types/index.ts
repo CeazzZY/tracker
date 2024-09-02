@@ -10,7 +10,7 @@ export interface ITracker {
 }
 
 export abstract class Method {
-  send: any;
+  abstract send(url: string, data: any): any;
   abstract listenRouteChange(callback: AnyFun): void;
   abstract listenError(callback: (err: IErr) => void): void;
   abstract listenUnhandledRejection(callback: (err: IErr) => void): void;

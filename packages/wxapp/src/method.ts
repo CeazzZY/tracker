@@ -3,6 +3,17 @@ import { IRouteInfo } from './types';
 import { parseAsyncErr, parseSyncErr } from './utils/err';
 
 class WxMethod extends Method {
+  send(url: string, data: any) {
+    return wx.request({
+      url,
+      method: 'post',
+      data: JSON.stringify(data),
+      header: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
   listenRouteChange(callback: AnyFun) {
     wx.onAppRoute((data: IRouteInfo) => {
       const { path, timeStamp } = data;

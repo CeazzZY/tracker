@@ -3,14 +3,21 @@ import { isSupportSendBeacon } from './utils';
 import { parseError } from './utils/err';
 
 class WebMethod extends Method {
-  constructor() {
-    super();
+  send(url: string, data: any) {
     if (isSupportSendBeacon())
-      this.send = window.navigator.sendBeacon.bind(this);
-    this.send = (url: string, data: any) => {
-      const img = new Image();
-      img.src = url + '?reportData=' + encodeURIComponent(JSON.stringify(data));
-    };
+      return window.navigator.sendBeacon(url, JSON.stringify(data));
+
+    return new Promise<void>((resolve) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('post', url);
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(data));
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          resolve();
+        }
+      };
+    });
   }
 
   listenRouteChange(callback: AnyFun): void {

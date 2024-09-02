@@ -15,7 +15,7 @@ class SendData {
   send() {
     const len = Math.min(this.eventList.length, SENDMAXLEN);
     const sendList = this.eventList.splice(0, len);
-    this.report(sendList);
+    this.report(options.dsn, sendList);
 
     if (this.eventList.length !== 0) {
       this.timerID = setTimeout(() => {
@@ -26,10 +26,10 @@ class SendData {
   }
 
   addData(type: DataType, data: ISendData['data']) {
-    const { appId, uid, ip } = options;
+    const { appId, userId, ip } = options;
     const event: ISendData = {
       appId,
-      uid,
+      uid: userId,
       ip,
       time: new Date().getTime(),
       type,

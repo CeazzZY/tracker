@@ -4,6 +4,7 @@ import { parseAsyncErr, parseSyncErr } from './utils/err';
 
 class WxMethod extends Method {
   send(url: string, data: any) {
+    console.log(data);
     return wx.request({
       url,
       method: 'post',
@@ -12,6 +13,10 @@ class WxMethod extends Method {
         'Content-Type': 'application/json',
       },
     });
+  }
+
+  getCurrentUrl(): string {
+    return '';
   }
 
   listenRouteChange(callback: AnyFun) {
@@ -35,13 +40,21 @@ class WxMethod extends Method {
     });
   }
 
+  listenClick(): void {}
+
   getPerformance() {
     wx.getPerformance();
   }
 
+  listenPopstateChange(): void {}
+
+  listenHistoryPushState(): void {}
+
+  listenHistoryReplaceState(): void {}
+
   listenBeforeunload(): void {}
 
-  listenClick(): void {}
+  listenHashChange(): void {}
 }
 
 export default WxMethod;

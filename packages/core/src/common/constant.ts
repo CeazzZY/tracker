@@ -5,4 +5,8 @@ export enum EVENTTYPES {
   CLICK = 'click',
   BEFOREUNLOAD = 'beforeunload',
   HASHCHANGE = 'hashchange',
+  HISTORYPUSHSTATE = 'history-pushState',
+  HISTORYREPLACESTATE = 'history-replaceState',
+  POPSTATE = 'popstate',
+  ROUTECHANGE = 'route-change',
 }

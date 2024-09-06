@@ -1,4 +1,4 @@
-import { _method } from './../utils/global';
+import { _method } from '../utils/global';
 import { EVENTTYPES } from '../common';
 import { isValidKey } from '../utils';
 import { eventBus } from './eventBus';
@@ -35,6 +35,18 @@ function replace(type: EVENTTYPES) {
     case EVENTTYPES.HASHCHANGE:
       listenHashchange(EVENTTYPES.HASHCHANGE);
       break;
+    case EVENTTYPES.HISTORYPUSHSTATE:
+      replaceHistoryPushState(EVENTTYPES.HISTORYPUSHSTATE);
+      break;
+    case EVENTTYPES.HISTORYREPLACESTATE:
+      replaceHistoryReplaceState(EVENTTYPES.HISTORYREPLACESTATE);
+      break;
+    case EVENTTYPES.POPSTATE:
+      listenPopstateChange(EVENTTYPES.POPSTATE);
+      break;
+    case EVENTTYPES.ROUTECHANGE:
+      listenRouteChange(EVENTTYPES.ROUTECHANGE);
+      break;
 
     default:
       break;
@@ -65,8 +77,32 @@ function listenBeforeunload(type: EVENTTYPES) {
   });
 }
 
+function replaceHistoryReplaceState(type: EVENTTYPES): void {
+  _method.listenHistoryReplaceState(function (...args) {
+    eventBus.runEvent(type, ...args);
+  });
+}
+
+function replaceHistoryPushState(type: EVENTTYPES): void {
+  _method.listenHistoryPushState(function (...args) {
+    eventBus.runEvent(type, ...args);
+  });
+}
+
 function listenHashchange(type: EVENTTYPES) {
-  _method.listenRouteChange(function (event: HashChangeEvent) {
+  _method.listenHashChange(function (event: HashChangeEvent) {
     eventBus.runEvent(type, event);
+  });
+}
+
+function listenPopstateChange(type: EVENTTYPES) {
+  _method.listenPopstateChange(function () {
+    eventBus.runEvent(type);
+  });
+}
+
+function listenRouteChange(type: EVENTTYPES) {
+  _method.listenRouteChange(function (path: string, timeStamp: number) {
+    eventBus.runEvent(type, path, timeStamp);
   });
 }

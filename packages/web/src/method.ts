@@ -1,5 +1,5 @@
-import { AnyFun, IErr, Method } from '@ceazzzy-tracing/shared';
-import { isSupportSendBeacon } from './utils';
+import { AnyFun, IErr, Method, VoidFun } from '@ceazzzy-tracing/shared';
+import { isSupportSendBeacon, replaceAop } from './utils';
 import { parseError } from './utils/err';
 
 class WebMethod extends Method {
@@ -20,8 +20,8 @@ class WebMethod extends Method {
     });
   }
 
-  listenRouteChange(callback: AnyFun): void {
-    window.addEventListener('hashchange', callback);
+  getCurrentUrl(): string {
+    return document.location.href;
   }
 
   listenError(callback: (err: IErr) => void): void {
@@ -45,6 +45,36 @@ class WebMethod extends Method {
     );
   }
 
+  listenHistoryPushState(callback: AnyFun): void {
+    if (!('history' in window)) return;
+    if (!('pushState' in window.history)) return;
+    replaceAop(window.history, 'pushState', (originalSend: VoidFun) => {
+      return function (this: any, ...args: any[]): void {
+        callback(...args);
+        originalSend.apply(this, args);
+      };
+    });
+  }
+
+  listenHistoryReplaceState(callback: AnyFun): void {
+    if (!('history' in window)) return;
+    if (!('pushState' in window.history)) return;
+    replaceAop(window.history, 'replaceState', (originalSend: VoidFun) => {
+      return function (this: any, ...args: any[]): void {
+        callback(...args);
+        originalSend.apply(this, args);
+      };
+    });
+  }
+
+  listenHashChange(callback: AnyFun): void {
+    window.addEventListener('hashchange', callback);
+  }
+
+  listenPopstateChange(callback: AnyFun): void {
+    window.addEventListener('popstate', callback);
+  }
+
   listenBeforeunload(callback: AnyFun): void {
     window.addEventListener('beforeunload', callback);
   }
@@ -54,6 +84,8 @@ class WebMethod extends Method {
   }
 
   getPerformance() {}
+
+  listenRouteChange(): void {}
 }
 
 export default WebMethod;

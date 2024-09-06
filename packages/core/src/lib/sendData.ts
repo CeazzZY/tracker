@@ -1,3 +1,4 @@
+import { getCurrentTime } from '@ceazzzy-tracing/shared';
 import { DataType, ISendData } from '../types';
 import { _support, _method } from '../utils/global';
 import { options } from './options';
@@ -31,7 +32,7 @@ class SendData {
       appId,
       uid: userId,
       ip,
-      time: new Date().getTime(),
+      time: getCurrentTime(),
       type,
       data,
     };

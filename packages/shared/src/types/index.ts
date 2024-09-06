@@ -11,12 +11,23 @@ export interface ITracker {
 
 export abstract class Method {
   abstract send(url: string, data: any): any;
-  abstract listenRouteChange(callback: AnyFun): void;
+  abstract getCurrentUrl(): string;
+
   abstract listenError(callback: (err: IErr) => void): void;
   abstract listenUnhandledRejection(callback: (err: IErr) => void): void;
+
+  //wxapp
+  abstract listenRouteChange(callback: AnyFun): void;
+  //web
+  abstract listenHashChange(callback: AnyFun): void;
+  abstract listenHistoryPushState(callback: AnyFun): void;
+  abstract listenHistoryReplaceState(callback: AnyFun): void;
+  abstract listenPopstateChange(callback: AnyFun): void;
+
   abstract listenBeforeunload(callback: AnyFun): void;
-  abstract listenClick(callback: AnyFun): void;
+
   abstract getPerformance(): void;
+  abstract listenClick(callback: AnyFun): void;
 }
 
 export enum ErrorType {
@@ -35,6 +46,15 @@ export interface IErr {
   stack?: IErrStack[];
 }
 
+export interface IPv {
+  referer: string;
+}
+
+export interface IPvDuring {
+  referer: string;
+  during: number;
+}
+
 export interface IErrStack {
   filename: string;
   col: string;
@@ -42,3 +62,11 @@ export interface IErrStack {
 }
 
 export type AnyFun = (...arg: any[]) => any;
+
+export type AnyObj<T = any> = {
+  [key: string]: T;
+};
+
+export type VoidFun = {
+  (...args: any[]): void;
+};

@@ -4,7 +4,7 @@ export const _global = getGlobal();
 export const _support = getGlobalSupport();
 export let _method: Method;
 
-function getGlobal(): Window | Wx {
+function getGlobal(): Window | WechatMiniprogram.Wx {
   if (window) return window;
   if (wx) return wx;
 

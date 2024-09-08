@@ -3,11 +3,11 @@ import { IRouteInfo } from '../types';
 import { parseAsyncErr, parseSyncErr } from './err';
 
 class WxMethod extends Method {
-  performance: Performance = wx.getPerformance();
+  performance: WechatMiniprogram.Performance = wx.getPerformance();
   send(url: string, data: any) {
     return wx.request({
       url,
-      method: 'post',
+      method: 'POST',
       data: JSON.stringify(data),
       header: {
         'Content-Type': 'application/json',
@@ -20,6 +20,7 @@ class WxMethod extends Method {
   }
 
   listenRouteChange(callback: AnyFun) {
+    //@ts-ignore
     wx.onAppRoute((data: IRouteInfo) => {
       const { path, timeStamp } = data;
       callback(path, timeStamp);
@@ -34,10 +35,12 @@ class WxMethod extends Method {
   }
 
   listenUnhandledRejection(callback: (err: IErr) => void) {
-    wx.onUnhandledRejection((err: PromiseRejectionEvent) => {
-      const errInfo = parseAsyncErr(err);
-      callback(errInfo);
-    });
+    wx.onUnhandledRejection(
+      (err: WechatMiniprogram.OnUnhandledRejectionCallbackResult) => {
+        const errInfo = parseAsyncErr(err);
+        callback(errInfo);
+      }
+    );
   }
 
   listenClick(): void {}

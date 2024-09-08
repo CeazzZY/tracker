@@ -10,7 +10,7 @@ export interface ITracker {
 }
 
 export abstract class Method {
-  abstract performance: Performance;
+  abstract performance: Performance | WechatMiniprogram.Performance;
 
   abstract send(url: string, data: any): any;
   abstract getCurrentUrl(): string;

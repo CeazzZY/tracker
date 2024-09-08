@@ -12,7 +12,9 @@ export function parseSyncErr(err: string) {
   };
 }
 
-export function parseAsyncErr(err: PromiseRejectionEvent): IErr {
+export function parseAsyncErr(
+  err: WechatMiniprogram.OnUnhandledRejectionCallbackResult
+): IErr {
   const reason = err.reason;
   const result: IErr = {
     type: ErrorType.PM,

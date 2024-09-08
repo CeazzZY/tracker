@@ -22,17 +22,12 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@ceazzzy-tracing/core": [
-        "./packages/core/src/index.ts"
+      "@ceazzzy-tracing/*": [
+        "./packages/*/src/index.ts"
       ],
-      "@ceazzzy-tracing/shared": [
-        "./packages/shared/src/index.ts"
-      ],
-      "@ceazzzy-tracing/web": [
-        "./packages/web/src/index.ts"
-      ],
-      "@ceazzzy-tracing/wxapp": [
-        "./packages/wxapp/src/index.ts"
+      "types": [
+        "node",
+        "wechat-miniprogram",
       ],
     },
   },

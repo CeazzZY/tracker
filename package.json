@@ -33,5 +33,8 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "rollup-plugin-uglify": "^6.0.4",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/wechat-miniprogram": "^3.4.7"
   }
 }

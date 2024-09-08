@@ -4,11 +4,11 @@ declare interface Window {
   __Method__: Method;
 }
 
-declare interface Wx {
-  __Tracker__: ITracker;
-  __isInit__: boolean;
-  __Method__: Method;
-  [key: string]: any;
+declare namespace WechatMiniprogram {
+  interface Wx {
+    getAppBaseInfo: () => { SDKVersion: string };
+    __Tracker__: ITracker;
+    __isInit__: boolean;
+    __Method__: Method;
+  }
 }
-
-declare let wx: Wx;

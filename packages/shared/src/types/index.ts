@@ -10,6 +10,8 @@ export interface ITracker {
 }
 
 export abstract class Method {
+  abstract performance: Performance;
+
   abstract send(url: string, data: any): any;
   abstract getCurrentUrl(): string;
 
@@ -26,7 +28,6 @@ export abstract class Method {
 
   abstract listenBeforeunload(callback: AnyFun): void;
 
-  abstract getPerformance(): void;
   abstract listenClick(callback: AnyFun): void;
 }
 

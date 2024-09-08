@@ -1,10 +1,10 @@
 import { AnyFun, IErr, Method } from '@ceazzzy-tracing/shared';
-import { IRouteInfo } from './types';
-import { parseAsyncErr, parseSyncErr } from './utils/err';
+import { IRouteInfo } from '../types';
+import { parseAsyncErr, parseSyncErr } from './err';
 
 class WxMethod extends Method {
+  performance: Performance = wx.getPerformance();
   send(url: string, data: any) {
-    console.log(data);
     return wx.request({
       url,
       method: 'post',
@@ -41,10 +41,6 @@ class WxMethod extends Method {
   }
 
   listenClick(): void {}
-
-  getPerformance() {
-    wx.getPerformance();
-  }
 
   listenPopstateChange(): void {}
 

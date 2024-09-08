@@ -1,8 +1,9 @@
 import { AnyFun, IErr, Method, VoidFun } from '@ceazzzy-tracing/shared';
-import { isSupportSendBeacon, replaceAop } from './utils';
-import { parseError } from './utils/err';
+import { isSupportSendBeacon, replaceAop } from '../utils';
+import { parseError } from './err';
 
 class WebMethod extends Method {
+  performance: Performance = window.performance;
   send(url: string, data: any) {
     if (isSupportSendBeacon())
       return window.navigator.sendBeacon(url, JSON.stringify(data));
@@ -82,8 +83,6 @@ class WebMethod extends Method {
   listenClick(callback: AnyFun): void {
     window.addEventListener('click', callback);
   }
-
-  getPerformance() {}
 
   listenRouteChange(): void {}
 }

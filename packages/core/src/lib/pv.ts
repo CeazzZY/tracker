@@ -9,8 +9,8 @@ let oldURL: string;
 let durationStartTime = getCurrentTime();
 
 export function initPv() {
-  let lastIsPop = false; // 最后一次触发路由变化是否为popState触发
-  let repetitionRoute = false; // 在触发 replaceState 后 100ms 内的 pushState 会被无效记录
+  let lastIsPop = false;
+  let repetitionRoute = false;
 
   eventBus.addEvent({
     type: EVENTTYPES.ROUTECHANGE,
@@ -59,7 +59,7 @@ export function initPv() {
       if (repetitionRoute) return;
       if (_method.getCurrentUrl() !== '') {
         const oldHost =
-          oldURL.indexOf('#') > 0 // 多页面情况下 history模式刷新还是在pv页面
+          oldURL.indexOf('#') > 0
             ? oldURL.slice(0, oldURL.indexOf('#'))
             : oldURL;
         if (

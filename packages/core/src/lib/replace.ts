@@ -60,8 +60,8 @@ function listenError(type: EVENTTYPES) {
 }
 
 function listenClick(type: EVENTTYPES) {
-  _method.listenClick(function (err: ErrorEvent) {
-    eventBus.runEvent(type, err);
+  _method.listenClick(function (event: Event) {
+    eventBus.runEvent(type, event);
   });
 }
 

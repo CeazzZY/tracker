@@ -2,6 +2,11 @@
   "name": "@ceazzzy-tracing/wxapp",
   "version": "1.0.0",
   "description": "",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "@ceazzzy-tracing/core": "workspace:*",
-    "@ceazzzy-tracing/shared": "workspace:*"
+    "@ceazzzy-tracing/shared": "workspace:*",
+    "web-vitals": "^4.2.3"
   }
 }

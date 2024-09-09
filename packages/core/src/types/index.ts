@@ -15,4 +15,5 @@ export enum DataType {
   PV = 'pv',
   PVDURING = 'pv-during',
   EVENT = 'event',
+  PERFORMANCE = 'performance',
 }

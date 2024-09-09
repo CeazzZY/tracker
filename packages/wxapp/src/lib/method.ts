@@ -1,6 +1,8 @@
 import { AnyFun, IErr, Method } from '@ceazzzy-tracing/shared';
 import { IRouteInfo } from '../types';
 import { parseAsyncErr, parseSyncErr } from './err';
+import { performanceObserverCallback } from './performance';
+import { DataType, ISendData } from 'packages/core/src/types';
 
 class WxMethod extends Method {
   performance: WechatMiniprogram.Performance = wx.getPerformance();
@@ -40,6 +42,24 @@ class WxMethod extends Method {
         const errInfo = parseAsyncErr(err);
         callback(errInfo);
       }
+    );
+  }
+
+  createPerformanceObserve(
+    options: PerformanceObserverInit,
+    callback: PerformanceObserverCallback
+  ): void {
+    this.performance.createObserver(callback).observe(options);
+  }
+
+  observePerformance(
+    report: (type: DataType, data: ISendData['data']) => void
+  ): void {
+    this.createPerformanceObserve(
+      {
+        entryTypes: ['render', 'script', 'navigation'],
+      },
+      performanceObserverCallback(report)
     );
   }
 

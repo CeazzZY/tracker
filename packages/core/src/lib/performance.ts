@@ -1,4 +1,6 @@
+import { _method } from '../utils/global';
+import { sendData } from './sendData';
+
 export function initPerformance() {
-  //   const data: Record<PermissionName | string, Record<string, any> | string> =
-  //     {};
+  _method.observePerformance(sendData.addData);
 }

@@ -1,3 +1,5 @@
+import { DataType, ISendData } from 'packages/core/src/types';
+
 export interface InitOptions {
   dsn: string;
   appId: string;
@@ -12,12 +14,15 @@ export interface ITracker {
 export abstract class Method {
   abstract performance: Performance | WechatMiniprogram.Performance;
 
+  //utils
   abstract send(url: string, data: any): any;
   abstract getCurrentUrl(): string;
 
+  //err
   abstract listenError(callback: (err: IErr) => void): void;
   abstract listenUnhandledRejection(callback: (err: IErr) => void): void;
 
+  //pv
   //wxapp
   abstract listenRouteChange(callback: AnyFun): void;
   //web
@@ -25,6 +30,18 @@ export abstract class Method {
   abstract listenHistoryPushState(callback: AnyFun): void;
   abstract listenHistoryReplaceState(callback: AnyFun): void;
   abstract listenPopstateChange(callback: AnyFun): void;
+
+  //performance
+  abstract createPerformanceObserve(
+    options: PerformanceObserverInit,
+    callback: PerformanceObserverCallback
+  ): void;
+  abstract observePerformance(
+    report: (type: DataType, data: ISendData['data']) => void
+  ): void;
+  // abstract getFP(): number;
+  // abstract getFCP(): number;
+  // abstract getLCP(): number;
 
   abstract listenBeforeunload(callback: AnyFun): void;
 

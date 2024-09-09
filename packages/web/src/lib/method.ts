@@ -1,6 +1,8 @@
+import { DataType, ISendData } from './../../../core/src/types/index';
 import { AnyFun, IErr, Method, VoidFun } from '@ceazzzy-tracing/shared';
 import { isSupportSendBeacon, replaceAop } from '../utils';
 import { parseError } from './err';
+import { performanceObserverCallback } from './performance';
 
 class WebMethod extends Method {
   performance: Performance = window.performance;
@@ -82,6 +84,24 @@ class WebMethod extends Method {
 
   listenClick(callback: AnyFun): void {
     window.addEventListener('click', callback);
+  }
+
+  createPerformanceObserve(
+    options: PerformanceObserverInit,
+    callback: PerformanceObserverCallback
+  ): void {
+    new PerformanceObserver(callback).observe(options);
+  }
+
+  observePerformance(
+    report: (type: DataType, data: ISendData['data']) => void
+  ): void {
+    this.createPerformanceObserve(
+      {
+        entryTypes: ['resource', 'navigation'],
+      },
+      performanceObserverCallback(report)
+    );
   }
 
   listenRouteChange(): void {}

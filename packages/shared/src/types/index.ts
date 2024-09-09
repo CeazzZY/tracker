@@ -1,5 +1,3 @@
-import { DataType, ISendData } from 'packages/core/src/types';
-
 export interface InitOptions {
   dsn: string;
   appId: string;
@@ -36,9 +34,7 @@ export abstract class Method {
     options: PerformanceObserverInit,
     callback: PerformanceObserverCallback
   ): void;
-  abstract observePerformance(
-    report: (type: DataType, data: ISendData['data']) => void
-  ): void;
+  abstract observePerformance(report: (...args: any) => void): void;
   // abstract getFP(): number;
   // abstract getFCP(): number;
   // abstract getLCP(): number;

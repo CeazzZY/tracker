@@ -1,4 +1,4 @@
-import { AnyObj, IErr, isValidKey } from '@ceazzzy-tracing/shared';
+import { AnyObj, isValidKey } from '@ceazzzy-tracing/shared';
 import { DataType, ISendData } from 'packages/core/src/types';
 
 const performanceEntryAttrs = {
@@ -26,21 +26,21 @@ export function performanceObserverCallback(
 ): PerformanceObserverCallback {
   return function (entryList: PerformanceObserverEntryList) {
     for (const list of entryList.getEntries()) {
+      let data: any;
       switch (list.entryType) {
         case 'navigation':
-          dealNavigationTime(list as PerformanceNavigationTiming);
+          data = dealNavigationTime(list as PerformanceNavigationTiming);
           break;
         case 'resource':
-          dealResource(list as PerformanceResourceTiming);
+          data = dealResource(list as PerformanceResourceTiming);
           break;
 
         default:
           console.warn('获取未知性能 entryType');
           break;
       }
+      if (data) report(DataType.PERFORMANCE, data);
     }
-    const data = {} as IErr;
-    report(DataType.PERFORMANCE, data);
   };
 }
 

@@ -1,5 +1,25 @@
-import { AnyObj, IErr } from '@ceazzzy-tracing/shared';
+import { AnyObj, IErr, isValidKey } from '@ceazzzy-tracing/shared';
 import { DataType, ISendData } from 'packages/core/src/types';
+
+const performanceEntryAttrs = {
+  initiatorType: '',
+  transferSize: 0,
+  encodedBodySize: 0,
+  decodedBodySize: 0,
+  duration: 0,
+  redirectStart: 0,
+  redirectEnd: 0,
+  startTime: 0,
+  fetchStart: 0,
+  domainLookupStart: 0,
+  domainLookupEnd: 0,
+  connectStart: 0,
+  connectEnd: 0,
+  requestStart: 0,
+  responseStart: 0,
+  responseEnd: 0,
+  workerStart: 0,
+};
 
 export function performanceObserverCallback(
   report: (type: DataType, data: ISendData['data']) => void
@@ -24,7 +44,7 @@ export function performanceObserverCallback(
   };
 }
 
-function dealNavigationTime(navigation: PerformanceNavigationTiming) {
+function dealNavigationTime(entry: PerformanceNavigationTiming) {
   const {
     domainLookupStart,
     domainLookupEnd,
@@ -42,7 +62,7 @@ function dealNavigationTime(navigation: PerformanceNavigationTiming) {
     redirectStart,
     unloadEventEnd,
     unloadEventStart,
-  } = navigation;
+  } = entry;
   const times: AnyObj = {};
 
   times.tti = domInteractive - fetchStart; // 首次可交互时间
@@ -73,9 +93,22 @@ function dealNavigationTime(navigation: PerformanceNavigationTiming) {
 
   times.unloadTime = unloadEventEnd - unloadEventStart; // 上一个页面的卸载耗时
 
-  console.log(times);
+  return times;
 }
 
-function dealResource(resource: PerformanceResourceTiming) {
-  console.log(resource);
+function dealResource(entry: PerformanceResourceTiming) {
+  const observerTypeList = ['img', 'script', 'link', 'audio', 'video', 'css'];
+
+  const { initiatorType = '' } = entry;
+
+  if (observerTypeList.indexOf(initiatorType.toLowerCase()) < 0) return;
+
+  const value: AnyObj = {};
+  Object.keys(performanceEntryAttrs).forEach((attr) => {
+    if (isValidKey(attr, entry)) {
+      value[attr] = entry[attr];
+    }
+  });
+
+  return value;
 }

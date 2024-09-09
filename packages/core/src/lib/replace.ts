@@ -1,8 +1,7 @@
 import { _method } from '../utils/global';
 import { EVENTTYPES } from '../common';
-import { isValidKey } from '../utils';
 import { eventBus } from './eventBus';
-import { IErr } from '@ceazzzy-tracing/shared';
+import { IErr, isValidKey } from '@ceazzzy-tracing/shared';
 
 export function initReplace(): void {
   for (const key in EVENTTYPES) {

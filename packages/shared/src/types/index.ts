@@ -48,6 +48,8 @@ export abstract class Method {
   abstract listenClick(callback: AnyFun): void;
 }
 
+export type Report = () => void;
+
 export enum ErrorType {
   JS = 'js',
   RS = 'resource',

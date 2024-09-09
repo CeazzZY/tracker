@@ -62,6 +62,17 @@ class WxMethod extends Method {
       performanceObserverCallback(report)
     );
   }
+  getLocalStorage(key: string): any {
+    return wx.getStorageSync(key);
+  }
+
+  setLocalStorage(key: string, value: any): void {
+    wx.setStorageSync(key, value);
+  }
+
+  removeLocalStorage(key: string): void {
+    wx.removeStorageSync(key);
+  }
 
   listenClick(): void {}
 

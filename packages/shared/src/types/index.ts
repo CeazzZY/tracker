@@ -39,6 +39,10 @@ export abstract class Method {
   // abstract getFCP(): number;
   // abstract getLCP(): number;
 
+  abstract getLocalStorage(key: string): any;
+  abstract setLocalStorage(key: string, value: any): void;
+  abstract removeLocalStorage(key: string): void;
+
   abstract listenBeforeunload(callback: AnyFun): void;
 
   abstract listenClick(callback: AnyFun): void;

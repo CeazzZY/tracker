@@ -104,6 +104,18 @@ class WebMethod extends Method {
     );
   }
 
+  getLocalStorage(key: string): any {
+    return localStorage.get(key);
+  }
+
+  setLocalStorage(key: string, value: any): void {
+    localStorage.setItem(key, value);
+  }
+
+  removeLocalStorage(key: string): void {
+    localStorage.removeItem(key);
+  }
+
   listenRouteChange(): void {}
 }
 

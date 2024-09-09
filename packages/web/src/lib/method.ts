@@ -105,7 +105,7 @@ class WebMethod extends Method {
   }
 
   getLocalStorage(key: string): any {
-    return localStorage.get(key);
+    return localStorage.getItem(key);
   }
 
   setLocalStorage(key: string, value: any): void {

@@ -1,6 +1,6 @@
 import { InitOptions } from '@ceazzzy-tracing/shared';
 import { _support } from '../utils/global';
-import { getSessionId } from '../utils/userId';
+import { getStorageId } from '../utils/userId';
 
 class Options {
   dsn: string = '';
@@ -10,7 +10,7 @@ class Options {
     const { dsn, appId } = options;
     this.dsn = dsn;
     this.appId = appId;
-    this.userId = getSessionId();
+    this.userId = getStorageId();
   }
 }
 

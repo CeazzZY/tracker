@@ -10,9 +10,10 @@ import { initPerformance } from './lib/performance';
 
 export function init(method: Method, options: InitOptions): void {
   if (_global.__isInit__) return;
+  GlobalMethod(method);
+
   if (!initOptions(options)) return;
 
-  GlobalMethod(method);
   initReplace();
 
   initSendData();

@@ -5,7 +5,6 @@ export function performanceObserverCallback(
 ): PerformanceObserverCallback {
   return function (entryList: PerformanceObserverEntryList) {
     for (const entry of entryList.getEntries()) {
-      console.log(entry);
       let data: any = {};
 
       switch (entry.entryType) {

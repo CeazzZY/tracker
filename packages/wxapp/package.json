@@ -1,6 +1,6 @@
 {
   "name": "@ceazzzy-tracing/wxapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -21,6 +21,6 @@
   ],
   "dependencies": {
     "@ceazzzy-tracing/core": "workspace:*",
-     "@ceazzzy-tracing/shared": "workspace:*"
+    "@ceazzzy-tracing/shared": "workspace:*"
   }
 }
